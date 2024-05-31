@@ -14,7 +14,7 @@ public class Main {
 
         LivroDAO livroDAO = new LivroDAO();
 
-        for(Livro l : livroDAO.()){
+        for(Livro l : livroDAO.listar()){
             System.out.println("Livro: " + l.getTitulo());
         }
         livroDAO.listar();
