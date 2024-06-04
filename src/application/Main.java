@@ -13,10 +13,13 @@ public class Main {
         livro.setIsbn("978-8497930772");
 
         LivroDAO livroDAO = new LivroDAO();
-
+        //list
         for(Livro l : livroDAO.listar()){
             System.out.println("Livro: " + l.getTitulo());
         }
         livroDAO.listar();
+
+        //update
+
     }
 }

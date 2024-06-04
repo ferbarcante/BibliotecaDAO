@@ -119,6 +119,39 @@ public class LivroDAO {
             pstm.setString(3, livro.getIsbn());
             pstm.setString(4, livro.getCategoria());
             pstm.setInt(5, livro.getId_editora());
+            pstm.setInt(6, livro.getId_livro());
+
+            pstm.execute();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            try{
+                if(pstm!=null){
+                    pstm.close();
+                }
+                if(conn!=null){
+                    conn.close();
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void delete(Livro livro){
+        String sql = "DELETE FROM livros WHERE id = ?";
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+
+        try{
+            conn = ConnFactory.connection();
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1, livro.getId_livro());
+
+            pstm.execute();
 
         }catch (Exception e){
             e.printStackTrace();
