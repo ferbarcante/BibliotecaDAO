@@ -104,7 +104,7 @@ public class LivroDAO {
     }
 
     public void update(Livro livro){
-        String sql = "UPDATE livros SET titulo = ?, preco = ?, isbn = ?, categoria = ?, id_editora = ?, WHERE id = ?";
+        String sql = "UPDATE livros SET titulo = ?, preco = ?, isbn = ?, categoria = ?, id_editora = ? WHERE id = ?";
 
         Connection conn = null;
         PreparedStatement pstm = null;
