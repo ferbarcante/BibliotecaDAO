@@ -90,4 +90,68 @@ public class EditoraDAO {
 
         return editoras;
     }
+
+    public void update(Editora editora){
+        String sql = "UPDATE editoras SET nomeFantasia = ?, endereco = ?, telefone = ? WHERE id = ?";
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+
+        try{
+            conn = ConnFactory.connection();
+
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setString(1, editora.getNomeFantasia());
+            pstm.setString(2, editora.getEndereco());
+            pstm.setString(3, editora.getTelefone());
+            pstm.setInt(4, editora.getId_editora());
+
+            pstm.execute();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            try{
+                if(pstm!=null){
+                    pstm.close();
+                }
+                if(conn!=null){
+                    conn.close();
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void delete(Editora editora){
+        String sql = "DELETE FROM editoras WHERE id = ?";
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+
+        try{
+            conn = ConnFactory.connection();
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setInt(1, editora.getId_editora());
+
+            pstm.execute();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            try{
+                if(pstm!=null){
+                    pstm.close();
+                }
+                if(conn!=null){
+                    conn.close();
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
 }
