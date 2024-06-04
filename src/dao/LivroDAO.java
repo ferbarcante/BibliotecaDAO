@@ -14,7 +14,7 @@ public class LivroDAO {
 
     public void save(Livro livro){
         //INSERT
-        String sql = "INSERT INTO livros (titulo, preco, isbn, categoria) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO livros (titulo, preco, isbn, categoria, id_editora) VALUES (?, ?, ?, ?)";
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -30,6 +30,7 @@ public class LivroDAO {
             pstm.setDouble(2, livro.getPreco());
             pstm.setString(3, livro.getIsbn());
             pstm.setString(4, livro.getCategoria());
+            pstm.setInt(5, livro.getId_editora());
 
             //executar a query
             pstm.execute();
@@ -102,5 +103,36 @@ public class LivroDAO {
         return livros;
     }
 
+    public void update(Livro livro){
+        String sql = "UPDATE livros SET titulo = ?, preco = ?, isbn = ?, categoria = ?, id_editora = ?, WHERE id = ?";
 
+        Connection conn = null;
+        PreparedStatement pstm = null;
+
+        try{
+            conn = ConnFactory.connection();
+
+            pstm = conn.prepareStatement(sql);
+
+            pstm.setString(1, livro.getTitulo());
+            pstm.setDouble(2, livro.getPreco());
+            pstm.setString(3, livro.getIsbn());
+            pstm.setString(4, livro.getCategoria());
+            pstm.setInt(5, livro.getId_editora());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            try{
+                if(pstm!=null){
+                    pstm.close();
+                }
+                if(conn!=null){
+                    conn.close();
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
 }
