@@ -1,0 +1,7 @@
+FAZER:
+[x] - Entidade Cliente
+[x] - Entidade Reserva
+[x] - DAO Cliente
+[] - DAO Reserva
+[] - criar tabelas no postgre
+[] - verificar requisitos
