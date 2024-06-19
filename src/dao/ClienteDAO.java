@@ -22,7 +22,7 @@ public class ClienteDAO {
             pstm.setString(1, cliente.getNome());
             pstm.setString(2, cliente.getEndereco());
             pstm.setString(3, cliente.getCpf());
-            pstm.setString(4, cliente.getTelefone();
+            pstm.setString(4, cliente.getTelefone());
 
             pstm.execute();
 
@@ -44,7 +44,7 @@ public class ClienteDAO {
     }
 
     public List<Cliente> listar(){
-        String sql = "SELECT * FROM cliente";
+        String sql = "SELECT * FROM clientes";
         List<Cliente> clientes = new ArrayList<Cliente>();
 
         Connection conn = null;

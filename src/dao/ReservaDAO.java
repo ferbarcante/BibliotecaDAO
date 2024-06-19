@@ -1,6 +1,8 @@
 package dao;
 
 import factory.ConnFactory;
+import model.Cliente;
+import model.Livro;
 import model.Reserva;
 
 import java.sql.Connection;
@@ -45,8 +47,8 @@ public class ReservaDAO {
     }
 
     public List<Reserva> listar(){
-        String sql = "SELECT * FROM reservas";
-        List<Reserva> reservas = new ArrayList<Reserva>();
+        String sql = "SELECT * FROM reservas_com_detalhes";
+        List<Reserva> reservas = new ArrayList<>();
 
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -69,6 +71,16 @@ public class ReservaDAO {
                 reserva.setDataReserva(rst.getDate("dataReserva"));
                 reserva.setDataDevolucao(rst.getDate("dataDevolucao"));
 
+                Cliente cliente = new Cliente();
+                cliente.setId_cliente(rst.getInt("id_cliente")); // Aqui você pode setar o ID do cliente, se necessário
+                cliente.setNome(rst.getString("nome_cliente")); // Utilizando o alias definido na view para o nome do cliente
+                reserva.setCliente(cliente); // Definindo o cliente na reserva
+
+                // Criando objeto Livro
+                Livro livro = new Livro();
+                livro.setId_livro(rst.getInt("id_livro")); // Aqui você pode setar o ID do livro, se necessário
+                livro.setTitulo(rst.getString("titulo")); // Utilizando o alias definido na view para o título do livro
+                reserva.setLivro(livro); // Definindo o livro na reserva
                 reservas.add(reserva);
             }
 

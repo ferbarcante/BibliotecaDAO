@@ -37,4 +37,7 @@ public class Editora {
     public void setId_editora(int id_editora) {
         this.id_editora = id_editora;
     }
+
+    public void setNomefantasia(String nomefantasia) {
+    }
 }

@@ -48,4 +48,10 @@ public class Reserva {
     public void setId_livro(int id_livro) {
         this.id_livro = id_livro;
     }
+
+    public void setLivro(Livro livro) {
+    }
+
+    public void setCliente(Cliente cliente) {
+    }
 }

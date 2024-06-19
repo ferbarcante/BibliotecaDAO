@@ -2,6 +2,8 @@ FAZER:
 [x] - Entidade Cliente
 [x] - Entidade Reserva
 [x] - DAO Cliente
-[] - DAO Reserva
-[] - criar tabelas no postgre
+[x] - DAO Reserva
+[x] - criar tabelas no postgre
+[] - criar uma view
+[] - fazer select com join
 [] - verificar requisitos
